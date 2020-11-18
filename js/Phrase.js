@@ -1,7 +1,4 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Phrase.js */
-
+// Phrase class
 class Phrase {
     constructor(phrase) {
         this.phrase = phrase;
@@ -16,6 +13,6 @@ class Phrase {
     }
 
     showMatchedLetter() {
-        
+
     }
 }

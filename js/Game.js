@@ -1,7 +1,4 @@
-/* Treehouse FSJS Techdegree
- * Project 4 - OOP Game App
- * Game.js */
-
+// Game class
 class Game {
     constructor() {
         this.missed = 0;
@@ -15,16 +12,20 @@ class Game {
         this.activePhrase = null;
     }
 
+    // remove overlay
+    // call getRandomPhrase
+    // set and return activePhrase to random phrase returned from getRandomPhrase
     startGame() {
         document.querySelector('#overlay').style.display = 'none';
         this.getRandomPhrase();
         this.activePhrase = this.getRandomPhrase();
-        console.log(this.activePhrase);
+        return this.activePhrase;
     }
 
+    // return phrase based on the random index value of 0 - array length
     getRandomPhrase() {
-        // create random number based on phrases array length
-        // return phrase at the random index value
+        const randomNum = Math.floor(Math.random() * this.phrases.length);
+        return this.phrases[randomNum];
     }
 
     handleInteraction() {
