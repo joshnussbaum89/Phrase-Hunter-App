@@ -5,9 +5,12 @@ class Game {
         this.phrases = [
             'the body cannot live without the mind', // the matrix
             'im in a glass case of emotion', // anchorman 
-            'i dont think were in kansas anymore', // the wizard of oz
+            'theres no place like home', // the wizard of oz
             'hold on to your butts', // jurassic park
-            'come with me if you want to live' // terminator 2
+            'come with me if you want to live', // terminator 2
+            'im gonna make him an offer he cant refuse', // the godfather
+            'may the force be with you', // star wars
+            'nobody calls me chicken' // back to the future
         ];
         this.activePhrase = null;
     }
