@@ -28,7 +28,13 @@ class Phrase {
         return this.phrase.includes(letter);
     }
 
-    showMatchedLetter() {
+    showMatchedLetter(letter) {
+        const letterClass = document.querySelectorAll(`.${letter}`);
 
+        letterClass.forEach(character => {
+            if (character.className.includes(letter)) {
+                character.classList.add('show');
+            }
+        });
     }
 }
