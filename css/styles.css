@@ -168,6 +168,7 @@ button {
   position: fixed;
   color: #FFFFFF;
   justify-content: center;
+  align-items: center;
   top: 0;
   bottom: 0;
   left: 0;

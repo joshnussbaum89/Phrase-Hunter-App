@@ -20,32 +20,62 @@ class Game {
     // set and return activePhrase to random phrase returned from getRandomPhrase
     startGame() {
         document.querySelector('#overlay').style.display = 'none';
-        this.getRandomPhrase();
-        this.activePhrase = this.getRandomPhrase();
-        const phrase = new Phrase(this.activePhrase);
-        phrase.addPhraseToDisplay();
+        this.activePhrase = new Phrase(this.getRandomPhrase());
+        this.activePhrase.addPhraseToDisplay();
         return this.activePhrase;
     }
 
     // return phrase based on the random index value of 0 - array length
     getRandomPhrase() {
         const randomNum = Math.floor(Math.random() * this.phrases.length);
-        return this.phrases[randomNum];
+        const randomPhrase = this.phrases[randomNum];
+        return randomPhrase;
     }
 
-    handleInteraction() {
-        
+    handleInteraction(button) {
+        const phraseText = this.activePhrase.phrase;
+
+        if (!phraseText.includes(button.textContent)) {
+            button.classList.add('wrong');
+            this.removeLife();
+        }
+        if (phraseText.includes(button.textContent)) {
+            this.activePhrase.showMatchedLetter(button.textContent);
+            this.checkForWin();
+        }
     }
 
+    //Increases the value of the missed property
+    //Removes a life from the scoreboard
+    //Checks if player has remaining lives and ends game if player is out
     removeLife() {
+        const tries = document.querySelectorAll('img[src="images/liveHeart.png"]');
+        this.missed += 1;
+        tries[0].src = "images/lostHeart.png";
 
+        if (this.missed > 4) {
+            this.gameOver();
+        }
     }
 
     checkForWin() {
+        //checks to see if the player has revealed all of the letters in the active phrase.
+        const letterLI = document.querySelectorAll('.letter');
+        const showLI = document.querySelectorAll('.show');
+        const overlay = document.querySelector('#overlay');
 
+        if (letterLI.length === showLI.length) {
+            overlay.classList.add('win');
+            overlay.innerHTML = `<h2>You Won 😎</h2><button class="refresh-win" onClick="window.location.reload();">Try again?</button>`;
+            overlay.style.display = 'flex';
+            return true;
+        }
     }
 
     gameOver() {
-
+        overlay.classList.add('lose');
+        overlay.innerHTML = `<h2>You Lost 🥺</h2><button class="refresh-lose" onClick="window.location.reload();">Try again?</button>`;
+        overlay.style.display = 'flex';
+        return false;
     }
 }

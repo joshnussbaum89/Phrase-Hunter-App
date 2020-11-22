@@ -7,8 +7,11 @@ document.getElementById('btn__reset').addEventListener('click', () => {
 
 document.getElementById('qwerty').addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
-        game.handleInteraction();
-        // phrase.showMatchedLetter('a');
+        game.handleInteraction(e.target);
     }
 });
+// document.getElementById('qwerty').addEventListener('keyup', (e) => {
+//     console.log(e.target.textContent)
+//     // game.handleInteraction(e.target);
+// });
 
