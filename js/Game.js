@@ -3,11 +3,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            'the body cannot live without the mind', // the matrix
-            'hold on to your butts', // jurassic park
-            'come with me if you want to live', // terminator 2
-            'may the force be with you', // star wars
-            'nobody calls me chicken' // back to the future
+            { phrase: 'the body cannot live without the mind' }, // the matrix
+            { phrase: 'hold on to your butts' }, // jurassic park
+            { phrase: 'come with me if you want to live' }, // terminator 2
+            { phrase: 'may the force be with you' }, // star wars
+            { phrase: 'nobody calls me chicken' } // back to the future
         ];
         this.activePhrase = null;
     }
@@ -33,7 +33,7 @@ class Game {
     // if phrase includes user input, show matched letter, disable button
     // else add .wrong class to user selection, disable button
     handleInteraction(button) {
-        const phraseText = this.activePhrase.phrase;
+        const phraseText = this.activePhrase.phrase.phrase;
 
         if (phraseText.includes(button.textContent)) {
             button.classList.add('chosen');

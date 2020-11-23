@@ -7,8 +7,8 @@ class Phrase {
     // split phrase into individual characters
     // display phrase on page in respective placeholder boxes
     addPhraseToDisplay() {
-        const phraseAsCharacters = this.phrase.split('');
-
+        const phraseAsCharacters = this.phrase.phrase.split('');
+        
         phraseAsCharacters.forEach(letter => {
             const li = document.createElement('li');
             const ul = document.querySelector('#phrase ul');
@@ -28,7 +28,7 @@ class Phrase {
 
     // check if phrase includes letter
     checkLetter(letter) {
-        return this.phrase.includes(letter);
+        return this.phrase.phrase.includes(letter);
     }
 
     // cycle through phrase and show or hide letters accordingly
