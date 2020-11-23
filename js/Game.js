@@ -58,8 +58,8 @@ class Game {
         }
     }
 
+    //checks to see if the player has revealed all of the letters in the active phrase.
     checkForWin() {
-        //checks to see if the player has revealed all of the letters in the active phrase.
         const letterLI = document.querySelectorAll('.letter');
         const showLI = document.querySelectorAll('.show');
         const overlay = document.querySelector('#overlay');
@@ -72,6 +72,7 @@ class Game {
         }
     }
 
+    // Show overlay with a message to user indicating that they lost, welcome them to try again
     gameOver() {
         overlay.classList.add('lose');
         overlay.innerHTML = `<h2>You Lost 🥺</h2><button class="refresh-lose" onClick="window.location.reload();">Try again?</button>`;
