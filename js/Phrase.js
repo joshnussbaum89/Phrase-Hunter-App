@@ -4,6 +4,8 @@ class Phrase {
         this.phrase = phrase;
     }
 
+    // split phrase into individual characters
+    // display phrase on page in respective placeholder boxes
     addPhraseToDisplay() {
         const phraseAsCharacters = this.phrase.split('');
 
@@ -24,16 +26,19 @@ class Phrase {
 
     }
 
+    // check if phrase includes letter
     checkLetter(letter) {
         return this.phrase.includes(letter);
     }
 
+    // cycle through phrase and show or hide letters accordingly
     showMatchedLetter(letter) {
         const letterClass = document.querySelectorAll(`.${letter}`);
 
         letterClass.forEach(character => {
-            if (character.className.includes(letter)) {
+            if (this.checkLetter(letter)) {
                 character.classList.add('show');
+                character.classList.remove('hide');
             }
         });
     }

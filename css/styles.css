@@ -1,5 +1,5 @@
 /* Main styles */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&Roboto:300');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
 
 /* Variables */
 
@@ -20,7 +20,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Playfair Display', serif;
 }
 
 body {
@@ -62,7 +62,30 @@ button {
 
 #btn__reset {
 	width: 200px;
-	margin: 0 auto;
+  margin: 0 auto;
+  border: 2px solid var(--color-keys-light);
+}
+
+#btn__reset:hover {
+  color: var(--color-keys-light);
+  border: 2px solid var(--color-keys-light);
+  background-color: #3a3f58;
+}
+
+.refresh-lose,
+.refresh-win {
+  background-color: white;
+  border: 2px solid white;
+}
+
+.refresh-lose:hover {
+  color: white;
+  background-color: #f5785f;
+}
+
+.refresh-win:hover {
+  color: white;
+  background-color: var(--color-win);
 }
 
 .main-container {
@@ -89,7 +112,6 @@ button {
   color: #3a3f58;
 }
 
-
 /* Phrase */
 
 .letter {
@@ -106,8 +128,6 @@ button {
 .space {
   width: 15px;
 }
-
-
 
 .show {
   color: #fff;

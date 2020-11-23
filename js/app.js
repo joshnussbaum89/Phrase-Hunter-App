@@ -1,8 +1,10 @@
-// Create new Game class and assign startGame() to "start game" button
-const game = new Game();
+// variable to hold Game object
+let game;
 
+// Create new Game class and assign startGame() to "start game" button
 // Activate game
 document.getElementById('btn__reset').addEventListener('click', () => {
+    game = new Game();
     game.startGame();
 });
 
@@ -17,9 +19,6 @@ document.getElementById('qwerty').addEventListener('click', (e) => {
 // Capture users key press and create <button>
 // Inner html of button changes dynamically to users input
 // Use this button to call handleInteraction method on the Game class
-
-/*** MAYBE CHANGE THE NAME OF THE 'KEY' PARAMETER? IT'S THE SAME AS THE CLASS YOU ADD TO THE BUTTON ***/
-
 window.addEventListener('keyup', keypress => {
     const userPress = keypress.key;
     const btn = document.querySelectorAll(`button[class="key"]`);
@@ -30,3 +29,4 @@ window.addEventListener('keyup', keypress => {
         }
     });
 });
+
