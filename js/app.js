@@ -11,18 +11,22 @@ document.getElementById('btn__reset').addEventListener('click', () => {
 document.getElementById('qwerty').addEventListener('click', (e) => {
     if (e.target.tagName === 'BUTTON') {
         game.handleInteraction(e.target);
-        console.log(e.target);
     }
 });
 
 // Capture users key press and create <button>
 // Inner html of button changes dynamically to users input
 // Use this button to call handleInteraction method on the Game class
-window.addEventListener('keyup', key => {
-    const userPress = key.key;
-    const button = document.createElement('BUTTON');
 
-    button.innerHTML = userPress;
-    button.classList.add('key');
-    game.handleInteraction(button);
+/*** MAYBE CHANGE THE NAME OF THE 'KEY' PARAMETER? IT'S THE SAME AS THE CLASS YOU ADD TO THE BUTTON ***/
+
+window.addEventListener('keyup', keypress => {
+    const userPress = keypress.key;
+    const btn = document.querySelectorAll(`button[class="key"]`);
+
+    btn.forEach(button => {
+        if (button.textContent === userPress) {
+            game.handleInteraction(button);
+        }
+    });
 });

@@ -34,13 +34,14 @@ class Game {
 
     handleInteraction(button) {
         const phraseText = this.activePhrase.phrase;
-
+        // console.log(!phraseText.includes(button.textContent))
         if (!phraseText.includes(button.textContent)) {
             button.classList.add('wrong');
             this.removeLife();
         }
         if (phraseText.includes(button.textContent)) {
             this.activePhrase.showMatchedLetter(button.textContent);
+            button.classList.add('chosen');
             this.checkForWin();
         }
     }
