@@ -36,9 +36,9 @@ class Game {
     // else add .wrong class to user selection, disable button
     handleInteraction(button) {
         const phraseText = this.activePhrase.phrase.phrase;
+        button.disabled = true;
 
         if (phraseText.includes(button.textContent)) {
-            button.disabled = true;
             button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.textContent);
             if (this.checkForWin()) {
@@ -46,7 +46,6 @@ class Game {
             }
         }
         if (!phraseText.includes(button.textContent)) {
-            button.disabled = true;
             button.classList.add('wrong');
             this.removeLife();
         }
