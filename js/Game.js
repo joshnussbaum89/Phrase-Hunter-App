@@ -3,11 +3,11 @@ class Game {
     constructor() {
         this.missed = 0;
         this.phrases = [
-            { phrase: 'the body cannot live without the mind' }, // the matrix
-            { phrase: 'hold on to your butts' }, // jurassic park
-            { phrase: 'come with me if you want to live' }, // terminator 2
-            { phrase: 'may the force be with you' }, // star wars
-            { phrase: 'nobody calls me chicken' } // back to the future
+            new Phrase('the body cannot live without the mind'), // the matrix
+            new Phrase('hold on to your butts'), // jurassic park
+            new Phrase('come with me if you want to live'), // terminator 2
+            new Phrase('may the force be with you'), // star wars
+            new Phrase('nobody calls me chicken') // back to the future
         ];
         this.activePhrase = null;
     }
@@ -21,7 +21,6 @@ class Game {
         this.activePhrase = new Phrase(this.getRandomPhrase());
         this.activePhrase.addPhraseToDisplay();
         return this.activePhrase;
-
     }
 
     // return phrase based on the random index value of 0 - array length
