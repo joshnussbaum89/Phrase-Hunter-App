@@ -17,9 +17,11 @@ class Game {
     // set and return activePhrase to random phrase returned from getRandomPhrase
     startGame() {
         document.querySelector('#overlay').style.display = 'none';
+
         this.activePhrase = new Phrase(this.getRandomPhrase());
         this.activePhrase.addPhraseToDisplay();
         return this.activePhrase;
+
     }
 
     // return phrase based on the random index value of 0 - array length
@@ -36,23 +38,19 @@ class Game {
         const phraseText = this.activePhrase.phrase.phrase;
 
         if (phraseText.includes(button.textContent)) {
-            button.classList.add('chosen');
             button.disabled = true;
+            button.classList.add('chosen');
             this.activePhrase.showMatchedLetter(button.textContent);
-            this.checkForWin();
+            if (this.checkForWin()) {
+                this.gameOver();
+            }
         }
         if (!phraseText.includes(button.textContent)) {
-            button.classList.add('wrong');
             button.disabled = true;
+            button.classList.add('wrong');
             this.removeLife();
         }
     }
-
-    //checks to see if the player has revealed all of the letters in the active phrase.
-    checkForWin() {
-        this.gameOver();
-    }
-
     //Increases the value of the missed property
     //Removes a life from the scoreboard
     //Checks if player has remaining lives and ends game if player is out
@@ -65,23 +63,27 @@ class Game {
             this.gameOver();
         }
     }
-
-    // Show overlay with a message to user indicating that they won/lost, welcome them to try again
-    gameOver() {
+    // checks to see if the player has won or lost the game
+    checkForWin() {
         const letterLI = document.querySelectorAll('.letter');
         const showLI = document.querySelectorAll('.show');
+        return letterLI.length === showLI.length;
+    }
+
+
+
+    // show overlay with a message to user indicating that they won/lost, welcome them to try again
+    gameOver() {
         const overlay = document.querySelector('#overlay');
 
-        if (letterLI.length === showLI.length) {
+        if (this.checkForWin()) {
             overlay.classList.add('win');
             overlay.innerHTML = `<h2>You Won 😎</h2><button class="refresh-win" onClick="window.location.reload();">Try again?</button>`;
             overlay.style.display = 'flex';
-            return true;
-        } else if (this.missed > 4) {
+        } else if (!this.checkForWin()) {
             overlay.classList.add('lose');
             overlay.innerHTML = `<h2>You Lost 🥺</h2><button class="refresh-lose" onClick="window.location.reload();">Try again?</button>`;
             overlay.style.display = 'flex';
-            return false;
         }
     }
 }
