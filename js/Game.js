@@ -51,6 +51,7 @@ class Game {
             this.removeLife();
         }
     }
+
     //Increases the value of the missed property
     //Removes a life from the scoreboard
     //Checks if player has remaining lives and ends game if player is out
@@ -63,14 +64,13 @@ class Game {
             this.gameOver();
         }
     }
+
     // checks to see if the player has won or lost the game
     checkForWin() {
         const letterLI = document.querySelectorAll('.letter');
         const showLI = document.querySelectorAll('.show');
         return letterLI.length === showLI.length;
     }
-
-
 
     // show overlay with a message to user indicating that they won/lost, welcome them to try again
     gameOver() {
